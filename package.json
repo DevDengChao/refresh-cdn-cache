@@ -3,5 +3,9 @@
   "private": true,
   "version": "0.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@alicloud/cdn20180510": "1.0.10",
+    "@alicloud/openapi-client": "^0.4.1"
+  }
 }
