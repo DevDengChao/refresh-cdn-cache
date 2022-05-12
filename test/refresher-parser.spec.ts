@@ -1,5 +1,5 @@
 import {RefresherParser} from "../src/refresher-parser";
-import {AliyunCdnCacheRefresher} from "../src/aliyun-cdn-cache-refresher";
+import {AliyunCdnCacheRefresher} from "../src/refresher/aliyun-cdn-cache-refresher";
 
 
 test('parse aliyun cdn cache refresher from args.cdn', async function () {

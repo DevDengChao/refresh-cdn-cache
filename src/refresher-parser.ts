@@ -1,6 +1,6 @@
-import {CdnCacheRefresher} from "./cdn-cache-refresher";
+import {CdnCacheRefresher} from "./refresher/cdn-cache-refresher";
 import {lodash, Logger} from "@serverless-devs/core";
-import {AliyunCdnCacheRefresher} from "./aliyun-cdn-cache-refresher";
+import {AliyunCdnCacheRefresher} from "./refresher/aliyun-cdn-cache-refresher";
 
 let logger = new Logger("refresh-cdn-cache");
 

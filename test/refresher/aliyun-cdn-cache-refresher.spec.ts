@@ -1,5 +1,5 @@
-import {AliyunCdnCacheRefresher} from "../src/aliyun-cdn-cache-refresher";
-import {CdnCacheRefresher} from "../src/cdn-cache-refresher";
+import {AliyunCdnCacheRefresher} from "../../src/refresher/aliyun-cdn-cache-refresher";
+import {CdnCacheRefresher} from "../../src/refresher/cdn-cache-refresher";
 import 'dotenv/config';
 
 let refresher: CdnCacheRefresher;
