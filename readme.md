@@ -6,7 +6,7 @@
 
 在 s.yaml 文件的 `post-deploy` 插槽中声明该插件即可:
 
-```yaml{4-9}
+```yaml
 services:
   default:
     actions:
