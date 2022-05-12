@@ -23,6 +23,10 @@
   "jest": {
     "transform": {
       "^.+\\.[t|j]sx?$": "ts-jest"
-    }
+    },
+    "collectCoverage": true,
+    "testPathIgnorePatterns": [
+      "dist/*"
+    ]
   }
 }
