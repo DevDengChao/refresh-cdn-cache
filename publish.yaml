@@ -1,0 +1,40 @@
+# https://github.com/Serverless-Devs/Serverless-Devs/blob/master/spec/zh/0.0.2/serverless_package_model/package_model.md#%E6%8F%92%E4%BB%B6%E6%A8%A1%E5%9E%8B%E5%85%83%E6%95%B0%E6%8D%AE
+Type: Plugin
+Name: refresh-cdn-cache
+Provider:
+  - 阿里云
+Version: 0.0.0
+Description: 刷新 CDN 缓存
+HomePage: https://github.com/DevDengChao/refresh-cdn-cache
+Tags: #标签详情
+  - Serverless Devs
+  - 核心模块
+Category: 其它
+Parameters:
+  type: object
+  required:
+    - paths
+  properties:
+    paths:
+      title: 待刷新缓存的路径.
+      description: 取值可以是单个字符串或者是字符串数组
+      example: https://example.com/
+      oneOf:
+        - type: string
+        - type: array
+          item: string
+    cdn:
+      type: string
+      title: CDN 服务供应商
+      description: 当未提供此参数时将根据 service.component 的取值来推断对应的 CDN 服务供应商.
+      enum:
+        - aliyun
+        - alibaba
+    accessKeyId:
+      type: string
+      description: 当 cdn 的取值为 `aliyun`, `alibaba` 时需要填写该字段.
+      title: 访问密钥 ID
+    accessKeySecret:
+      type: string
+      description: 当 cdn 的取值为 `aliyun`, `alibaba` 时需要填写该字段.
+      title: 访问密钥密码
