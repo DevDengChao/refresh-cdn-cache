@@ -19,3 +19,5 @@ export async function index(inputs, args) {
 
     return inputs;
 }
+
+module.exports = index;
