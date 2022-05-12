@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "@alicloud/cdn20180510": "1.0.10",
-    "@alicloud/openapi-client": "^0.4.1"
+    "@alicloud/openapi-client": "^0.4.1",
+    "@serverless-devs/core": "^0.1.35"
   },
   "devDependencies": {
     "@types/jest": "^27.5.0",
