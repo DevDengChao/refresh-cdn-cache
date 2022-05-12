@@ -26,7 +26,8 @@
     },
     "collectCoverage": true,
     "testPathIgnorePatterns": [
-      "dist/*"
+      "dist/*",
+      "example/*"
     ]
   },
   "engines": {

@@ -1,0 +1,11 @@
+{
+  "name": "refresh-cdn-cache-example",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "build:example": "s build"
+  },
+  "devDependencies": {
+    "@serverless-devs/s": "^2.1.0"
+  }
+}
