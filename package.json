@@ -28,5 +28,8 @@
     "testPathIgnorePatterns": [
       "dist/*"
     ]
+  },
+  "engines": {
+    "node": ">=10.8.0"
   }
 }
