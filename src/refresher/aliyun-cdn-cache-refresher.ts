@@ -1,8 +1,12 @@
 import {AbstractCdnCacheRefresher} from "./abstract-cdn-cache-refresher";
 import {Config} from "@alicloud/openapi-client";
 import Client, {RefreshObjectCachesRequest} from "@alicloud/cdn20180510";
+import {Logger} from "@serverless-devs/core";
+
 
 export class AliyunCdnCacheRefresher extends AbstractCdnCacheRefresher {
+
+    private readonly logger = new Logger("refresh-cdn-cache/aliyun");
 
     private client: Client;
 
@@ -28,6 +32,7 @@ export class AliyunCdnCacheRefresher extends AbstractCdnCacheRefresher {
             return previousValue + "\r\n" + currentValue;
         });
         await this.client.refreshObjectCaches(request); // this may throw runtime exception
+        this.logger.info("Refresh CDN cache success.");
     }
 
 
