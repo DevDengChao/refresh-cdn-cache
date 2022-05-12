@@ -1,6 +1,6 @@
 # Refresh CDN cache plugin for @Serverless-Devs/s
 
-此插件可以帮你在 @serverless-devs/s 运行过程中刷新指定 URL 上的 CDN 缓存.
+此插件可以帮你在 [Serverless-Devs](https://github.com/Serverless-Devs/Serverless-Devs) 运行过程中刷新指定 URL 上的 CDN 缓存.
 
 ## 如何使用
 
