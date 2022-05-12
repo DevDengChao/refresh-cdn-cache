@@ -36,7 +36,7 @@ services:
     + 示例值: `https://example.com/`
 + cdn: CDN 服务供应商标识.
     + 说明: 选填, 当该参数未填写时, 将通过 service.component 来推断对应的取值. 不区分大小写.
-      目前可以使用的值包括:
+    + 示例值:
         + `aliyun`
         + `alibaba`
 + accessKeyId: 访问密钥 ID.
