@@ -16,8 +16,8 @@ export class RefresherParser {
     }
 
     private readonly acceptableCdnValues = "Acceptable values (case insensitive):\r\n" +
-        "\t+ alibaba\r\n" +
-        "\t+ aliyun\r\n";
+        "  + alibaba\r\n" +
+        "  + aliyun\r\n";
 
     public parse(): CdnCacheRefresher {
         // NOTE: maybe we should use something like multi-key map to do this
@@ -50,13 +50,14 @@ export class RefresherParser {
                 // TODO 2022/5/12: highlight in example
                 throw new Error(JSON.stringify({
                     message,
-                    tips: "Specify a cdn argument like below or report your issue here: https://github.com/DevDengChao/refresh-cdn-cache\r\n" +
+                    tips: message + "\r\n" +
+                        "Please specify a cdn argument like below or report your issue here: https://github.com/DevDengChao/refresh-cdn-cache\r\n" +
                         "\r\n" +
                         "actions:\r\n" +
-                        "   pre-deploy:\r\n" +
-                        "       - plugin: DevDengChao/refresh-cdn-cache\r\n" +
-                        "         args:\r\n" +
-                        "           - cdn: aliyun\r\n" +
+                        "  post-deploy:\r\n" +
+                        "    - plugin: DevDengChao/refresh-cdn-cache\r\n" +
+                        "      args:\r\n" +
+                        "        cdn: aliyun\r\n" +
                         "\r\n" +
                         this.acceptableCdnValues,
                 }));
