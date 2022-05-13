@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "test": "jest"
+    "test": "jest --detectOpenHandles --forceExit"
   },
   "dependencies": {
     "@alicloud/cdn20180510": "1.0.10",
