@@ -13,7 +13,7 @@ test('parse aliyun cdn cache refresher from args.cdn', async function () {
     expect(refresher).toBeInstanceOf(AliyunCdnCacheRefresher);
 });
 
-test('unacceptable args.cdn',  function (done) {
+test('unacceptable args.cdn', function (done) {
     let parser = new RefresherParser({}, {
         cdn: "unacceptable-value"
     });
@@ -34,17 +34,17 @@ test('parse aliyun cdn cache refresher from service.component', async function (
     let component = components[index];
 
     console.log(`trying to parse service.component with value ${component}`);
-    let parser = new RefresherParser({component}, {});
+    let parser = new RefresherParser({project: {component}}, {});
     let refresher = parser.parse();
     expect(refresher).toBeInstanceOf(AliyunCdnCacheRefresher);
 });
 
 
-test('unacceptable service.component',   function (done) {
-    let parser = new RefresherParser({component:"unacceptable-value"}, {});
+test('unacceptable service.component', function (done) {
+    let parser = new RefresherParser({project: {component: "unacceptable-value"}}, {});
     try {
         parser.parse();
-    } catch (e){
+    } catch (e) {
         expect(e.message).toContain('message');
         expect(e.message).toContain('tips');
         expect(e.message).toContain('Cannot determine which cdn cache refresher to use');

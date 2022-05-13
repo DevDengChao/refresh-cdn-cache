@@ -39,7 +39,7 @@ export class RefresherParser {
                 }));
         }
 
-        let component = lodash.get(this.inputs, "component");
+        let component = lodash.get(this.inputs, "project.component");
         switch (component) {
             case 'fc':
             case 'devsapp/fc':
