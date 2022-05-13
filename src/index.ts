@@ -8,7 +8,7 @@ let logger = new Logger("refresh-cdn-cache");
  * @param inputs
  * @param args
  */
-export async function index(inputs, args) {
+module.exports = async function index(inputs, args) {
     logger.debug(`inputs params: ${JSON.stringify(inputs)}`);
     logger.debug(`args params: ${JSON.stringify(args)}`);
 
@@ -19,5 +19,3 @@ export async function index(inputs, args) {
 
     return inputs;
 }
-
-module.exports = index;

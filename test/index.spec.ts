@@ -1,10 +1,10 @@
-import {index} from "../src";
+let subject = require("../src/index");
 import 'dotenv/config';
 
 
 test('it works', async function () {
     let inputs = {a: "b"};
-    let output = await index(inputs, {
+    let output = await subject(inputs, {
         cdn: "aliyun",
         accessKeyId: process.env.CDN_ACCESS_KEY_ID,
         accessKeySecret: process.env.CDN_ACCESS_KEY_SECRET,
