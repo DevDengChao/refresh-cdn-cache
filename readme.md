@@ -1,5 +1,7 @@
 # Refresh CDN cache plugin for @Serverless-Devs/s
 
+[![Node.js CI](https://github.com/DevDengChao/refresh-cdn-cache/actions/workflows/default.yml/badge.svg?branch=master&event=push)](https://github.com/DevDengChao/refresh-cdn-cache/actions/workflows/default.yml)
+
 此插件可以帮你在 [Serverless-Devs](https://github.com/Serverless-Devs/Serverless-Devs) 运行过程中刷新指定 URL 上的 CDN 缓存.
 
 ## 如何使用
