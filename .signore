@@ -1,0 +1,11 @@
+.idea/
+.github/
+.s/
+coverage/
+example/
+node_modules/
+src/
+test/
+.env
+.gitignore
+LICENSE
