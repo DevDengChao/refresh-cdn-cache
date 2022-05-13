@@ -92,12 +92,21 @@ describe('invalid access key id and secret', () => {
 
 async function assertThrowsException(path: string, keyword: string) {
     let catchTriggered = false;
-    try {
-        await refresher.refresh([path]);
-    } catch (e) {
-        // console.debug(e);
-        expect(e.message).toContain(keyword);
-        catchTriggered = true;
+    let retry = 0, maxRetry = 3;
+
+    while (retry < maxRetry && !catchTriggered) {
+        try {
+            await refresher.refresh([path]);
+        } catch (e) {
+            // maybe we should config connectTimeout or readTimeout instead?
+            if (e.message.toString().includes('socket hang up')) {
+                retry++;
+            } else {
+                // console.debug(e);
+                expect(e.message).toContain(keyword);
+                catchTriggered = true;
+            }
+        }
     }
     expect(catchTriggered).toBeTruthy();
 }
