@@ -3,7 +3,7 @@ Type: Plugin
 Name: refresh-cdn-cache
 Provider:
   - 阿里云
-Version: 0.0.1
+Version: 0.0.2
 Description: 刷新 CDN 缓存
 HomePage: https://github.com/DevDengChao/refresh-cdn-cache
 Tags: #标签详情
