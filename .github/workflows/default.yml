@@ -7,20 +7,23 @@ on:
   pull_request:
     branches: [ master ]
 jobs:
-  build:
+  test:
+    env:
+      CDN_ACCESS_KEY_ID: ${{ secrets.CDN_ACCESS_KEY_ID }}
+      CDN_ACCESS_KEY_SECRET: ${{ secrets.CDN_ACCESS_KEY_SECRET }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-        node-version: [12, 14, 16, 18]
+        node-version: [ 12, 14, 16, 18 ]
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      # https://github.com/actions/setup-node
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'yarn'
-    - run: yarn config set registry https://registry.npmjs.org
-    - run: yarn install
-    - run: yarn test
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        # https://github.com/actions/setup-node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
+      - run: yarn config set registry https://registry.npmjs.org
+      - run: yarn install
+      - run: yarn test
