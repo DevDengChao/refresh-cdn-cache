@@ -13,7 +13,7 @@ services:
   default:
     actions:
       post-deploy:
-        - plugin: DevDengChao/refresh-cdn-cache
+        - plugin: refresh-cdn-cache
           args:
             cdn: aliyun
             accessKeyId: ${env(CDN_ACCESS_KEY_ID)}

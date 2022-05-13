@@ -55,7 +55,7 @@ export class RefresherParser {
                         "\r\n" +
                         "actions:\r\n" +
                         "  post-deploy:\r\n" +
-                        "    - plugin: DevDengChao/refresh-cdn-cache\r\n" +
+                        "    - plugin: refresh-cdn-cache\r\n" +
                         "      args:\r\n" +
                         "        cdn: aliyun\r\n" +
                         "\r\n" +
