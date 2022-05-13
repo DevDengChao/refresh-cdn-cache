@@ -78,6 +78,17 @@ describe('invalid access key id and secret', () => {
         await assertThrowsException(path, "InvalidAccessKeyId.NotFound");
     });
 
+    test('missing accessKeyId and accessKeySecret', async function () {
+        refresher.config({
+            accessKeyId: null,
+            accessKeySecret: null
+        });
+
+        let path = 'https://blog.dengchao.fun/index.html';
+        // MissingAccessKeyId: code: 400, AccessKeyId is mandatory for this action.
+        await assertThrowsException(path, "MissingAccessKeyId");
+    });
+
 });
 
 async function assertThrowsException(path: string, keyword: string) {
@@ -85,7 +96,7 @@ async function assertThrowsException(path: string, keyword: string) {
     try {
         await refresher.refresh([path]);
     } catch (e) {
-        console.warn(e);
+        // console.debug(e);
         expect(e.message).toContain(keyword);
         catchTriggered = true;
     }
