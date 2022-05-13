@@ -7,7 +7,6 @@ services:
       post-build:
         - plugin: ${path(../dist/)} # you should build the plugin first to run this e2e test example
           args:
-            cdn: aliyun
             accessKeyId: ${env(CDN_ACCESS_KEY_ID)}
             accessKeySecret: ${env(CDN_ACCESS_KEY_SECRET)}
             paths: https://blog.dengchao.fun/index.html
