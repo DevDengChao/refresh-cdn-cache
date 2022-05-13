@@ -2,7 +2,7 @@
   "name": "refresh-cdn-cache",
   "private": true,
   "version": "0.0.0",
-  "main": "index.js",
+  "main": "dist/index.js",
   "license": "MIT",
   "scripts": {
     "build": "tsc",
