@@ -27,11 +27,10 @@ describe('valid access key id and secret', () => {
         await assertThrowsException(path, "InvalidObjectPath.Malformed");
     });
 
-    test('not your cdn', async function () {
-
-        let path = 'https://github.com';
-        // InvalidObjectPath.Malformed: code: 400, The specified ObjectPath is invalid. request id: xxxx
-        await assertThrowsException(path, "InvalidObjectPath.Malformed");
+    test('domain not found', async function () {
+        let path = 'https://github.com/';
+        // InvalidDomain.NotFound: code: 404, The domain [github.com] does not belong to you. request id: xxxx
+        await assertThrowsException(path, "InvalidDomain.NotFound");
     });
 
     test('concat path with comma', async function () {
