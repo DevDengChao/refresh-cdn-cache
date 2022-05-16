@@ -1,5 +1,5 @@
 import {CdnCacheRefresher} from "./cdn-cache-refresher";
-import {getCredential} from "@serverless-devs/core";
+import {getCredential, getCredentialAliasList} from "@serverless-devs/core";
 import {Credential} from "../credential";
 
 export abstract class AbstractCdnCacheRefresher implements CdnCacheRefresher {
@@ -13,10 +13,13 @@ export abstract class AbstractCdnCacheRefresher implements CdnCacheRefresher {
         }
 
         if (args.access) {
-            this.credential = await this.loadCredentialFromAccess(args.access);
-            if (this.credential != null && this.isCredentialFilled(this.credential)) {
-                await this.onConfig(this.credential);
-                return;
+            let list = await getCredentialAliasList();
+            if (list.includes(args.access)) {
+                this.credential = await this.loadCredentialFromAccess(args.access);
+                if (this.credential != null && this.isCredentialFilled(this.credential)) {
+                    await this.onConfig(this.credential);
+                    return;
+                }
             }
         }
 
