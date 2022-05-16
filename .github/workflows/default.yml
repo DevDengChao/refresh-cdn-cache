@@ -29,5 +29,9 @@ jobs:
         run: yarn install && yarn test
       - name: Build
         run: yarn build
+      - name: Install @serverless-devs/s
+        run: yarn global add @serverless-devs/s
+      - name: Generate cdn config
+        run: s config add --access cdn --AccessKeyID ${{ secrets.CDN_ACCESS_KEY_ID }} --AccessKeySecret ${{ secrets.CDN_ACCESS_KEY_SECRET }} -f
       - name: Run e2e test
         run: yarn test:e2e
