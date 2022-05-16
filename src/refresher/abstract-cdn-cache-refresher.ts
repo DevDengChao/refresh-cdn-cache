@@ -60,8 +60,7 @@ export abstract class AbstractCdnCacheRefresher implements CdnCacheRefresher {
 
     protected abstract loadCredentialFromCredentials(credentials: Record<string, string>): Credential;
 
-    async loadCredentialFromAccess(access: string | null): Promise<Credential> {
-        if (access == null) return
+    protected async loadCredentialFromAccess(access: string): Promise<Credential> {
         return this.loadCredentialFromCredentials(await getCredential(access));
     };
 
