@@ -30,6 +30,10 @@ Parameters:
       enum:
         - aliyun
         - alibaba
+    access:
+      type: string
+      title: @serverless-devs/s 配置别名
+      description: 当提供此参数时, refresh-cdn-cache 插件将尝试加载对应的密钥. 当未提供此参数时将使用环境变量中定义的密钥.
     accessKeyId:
       type: string
       description: 当 cdn 的取值为 `aliyun`, `alibaba` 时需要填写该字段.
