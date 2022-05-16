@@ -1,21 +1,15 @@
 import {AbstractCdnCacheRefresher} from "../../src/refresher/abstract-cdn-cache-refresher";
 import {Credential} from "../../src/credential";
-import {getCredential, getRootHome, setKnownCredential} from "@serverless-devs/core";
-import * as fs from "fs";
-import * as path from "path";
+import {getCredential, setKnownCredential} from "@serverless-devs/core";
+import {backupAccessDotYaml, restoreAccessDotYaml} from "../helper";
+
 
 beforeEach(() => {
-    console.log('backup existing access.yaml');
-    let home = getRootHome();
-    let src = path.join(home, 'access.yaml');
-    if (fs.existsSync(src)) fs.renameSync(src, path.join(home, 'access-backup.yaml'));
+    backupAccessDotYaml()
 });
 
 afterEach(() => {
-    console.log("restore existing access.yaml");
-    let home = getRootHome();
-    let src = path.join(home, 'access-backup.yaml');
-    if (fs.existsSync(src)) fs.renameSync(src, path.join(home, 'access.yaml'));
+    restoreAccessDotYaml();
 });
 
 test('load credential from args', function (done) {
