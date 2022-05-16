@@ -3,7 +3,7 @@ import {getCredential, getCredentialAliasList, Logger} from "@serverless-devs/co
 import {Credential} from "../credential";
 
 export abstract class AbstractCdnCacheRefresher implements CdnCacheRefresher {
-    private readonly logger = new Logger('refresh-cdn-cache');
+    protected readonly logger = new Logger('refresh-cdn-cache');
 
     private credential: Credential = {};
 

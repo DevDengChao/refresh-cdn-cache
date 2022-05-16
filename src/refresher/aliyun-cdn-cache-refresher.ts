@@ -1,12 +1,11 @@
 import {AbstractCdnCacheRefresher} from "./abstract-cdn-cache-refresher";
 import {Config} from "@alicloud/openapi-client";
 import Client, {RefreshObjectCachesRequest} from "@alicloud/cdn20180510";
-import {decryptCredential, Logger} from "@serverless-devs/core";
+import {decryptCredential} from "@serverless-devs/core";
 import {Credential} from "../credential";
 
 
 export class AliyunCdnCacheRefresher extends AbstractCdnCacheRefresher {
-    private readonly logger = new Logger("refresh-cdn-cache/aliyun");
 
     private client: Client;
 
