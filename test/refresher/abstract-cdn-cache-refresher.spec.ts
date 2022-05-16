@@ -73,6 +73,10 @@ test('unable to load credential', function (done) {
     });
 });
 
+test('refresh a single item', function (done) {
+    new MyCdnCacheRefresher(done).refresh('index.html').then();
+});
+
 class MyCdnCacheRefresher extends AbstractCdnCacheRefresher {
     private readonly done: Function;
 
@@ -101,6 +105,8 @@ class MyCdnCacheRefresher extends AbstractCdnCacheRefresher {
     }
 
     protected onRefresh(paths: Array<string>) {
+        expect(paths).toStrictEqual(['index.html']);
+        this.done();
     }
 
     protected loadCredentialFromCredentials(credentials: Record<string, string>): Credential {
