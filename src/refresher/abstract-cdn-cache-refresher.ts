@@ -1,11 +1,14 @@
 import {CdnCacheRefresher} from "./cdn-cache-refresher";
-import {getCredential, getCredentialAliasList} from "@serverless-devs/core";
+import {getCredential, getCredentialAliasList, Logger} from "@serverless-devs/core";
 import {Credential} from "../credential";
 
 export abstract class AbstractCdnCacheRefresher implements CdnCacheRefresher {
+    private readonly logger = new Logger('refresh-cdn-cache');
+
     private credential: Credential = {};
 
     async config(args: Record<string, any>) {
+        this.logger.debug("attempt loading credential from args directly");
         this.credential = this.loadCredentialFromArgs(args);
         if (this.credential != null && this.isCredentialFilled(this.credential)) {
             await this.onConfig(this.credential);
@@ -13,6 +16,7 @@ export abstract class AbstractCdnCacheRefresher implements CdnCacheRefresher {
         }
 
         if (args.access) {
+            this.logger.debug("attempt loading credential by args.access");
             let list = await getCredentialAliasList();
             if (list.includes(args.access)) {
                 this.credential = await this.loadCredentialFromAccess(args.access);
@@ -20,15 +24,19 @@ export abstract class AbstractCdnCacheRefresher implements CdnCacheRefresher {
                     await this.onConfig(this.credential);
                     return;
                 }
+            } else {
+                this.logger.warn(`attempt loading credential by args.access failed: alias ${args.access} not found. You may need to debug with \`s config get\`.`);
             }
         }
 
+        this.logger.debug("attempt loading credential from environment variables");
         this.credential = this.loadCredentialFromEnv(process.env);
         if (this.credential != null && this.isCredentialFilled(this.credential)) {
             await this.onConfig(this.credential);
             return;
         }
 
+        this.logger.debug("attempt loading credential from @serverless-devs/s' credentials");
         this.credential = this.loadCredentialFromCredentials(args.credentials);
         if (this.credential != null && this.isCredentialFilled(this.credential)) {
             await this.onConfig(this.credential);
