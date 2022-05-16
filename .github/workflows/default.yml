@@ -30,4 +30,4 @@ jobs:
       - name: Build
         run: yarn build
       - name: Run e2e test
-        run: cd example && yarn install && yarn test
+        run: yarn test:e2e
