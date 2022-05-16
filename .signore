@@ -2,7 +2,7 @@
 .github/
 .s/
 coverage/
-example/
+examples/
 node_modules/
 src/
 test/
