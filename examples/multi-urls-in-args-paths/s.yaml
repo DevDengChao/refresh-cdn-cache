@@ -1,0 +1,24 @@
+edition: 1.0.0
+name: refresh-cdn-cache.example.dengchao.fun
+access: ignored
+services:
+  default:
+    actions:
+      post-build:
+        - plugin: ${path(../../dist/)}
+          args:
+            paths:
+              - https://blog.dengchao.fun/index.html
+              - https://blog.dengchao.fun/tag/index.html
+    # you are expected to have configured 'cdn' as a serverless-devs/s config.
+    access: cdn
+    component: devsapp/fc
+    props:
+      region: cn-shenzhen
+      service:
+        name: dummy-service
+      function:
+        name: dummy-function
+        handler: dummy-handler
+        runtime: custom
+        codeUri: ./
