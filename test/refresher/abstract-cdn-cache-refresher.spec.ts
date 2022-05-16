@@ -16,6 +16,14 @@ test('load credential from args', function (done) {
     new MyCdnCacheRefresher(done).config({a: 'dummy-access-content'});
 });
 
+test('load credential by args.access', function (done) {
+    let refresher = new MyCdnCacheRefresher(done);
+    setKnownCredential({A: 'dummy-access-content'}, 'dummy-args-access')
+        .then(() => refresher.config({
+            access: 'dummy-args-access'
+        }));
+});
+
 describe('load credential from env', () => {
 
     test('load credential from env', function (done) {
