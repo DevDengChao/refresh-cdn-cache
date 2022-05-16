@@ -1,16 +1,25 @@
 import {AliyunCdnCacheRefresher} from "../../src/refresher/aliyun-cdn-cache-refresher";
 import {CdnCacheRefresher} from "../../src/refresher/cdn-cache-refresher";
 import 'dotenv/config';
+import {backupAccessDotYaml, restoreAccessDotYaml} from "../helper";
 
 let refresher: CdnCacheRefresher;
 
+beforeEach(() => {
+    backupAccessDotYaml();
+});
+
+afterEach(() => {
+    restoreAccessDotYaml();
+});
+
 describe('valid access key id and secret', () => {
 
-    beforeEach(() => {
+    beforeEach(async () => {
         let accessKeyId = process.env.CDN_ACCESS_KEY_ID;
         let accessKeySecret = process.env.CDN_ACCESS_KEY_SECRET;
         refresher = new AliyunCdnCacheRefresher();
-        refresher.config({
+        await refresher.config({
             accessKeyId,
             accessKeySecret
         });
@@ -44,6 +53,7 @@ describe('invalid access key id and secret', () => {
 
     beforeEach(() => {
         refresher = new AliyunCdnCacheRefresher();
+        process.env = {}; // clear all existing env variables
     })
 
     test('permission denied', async function () {
@@ -52,7 +62,7 @@ describe('invalid access key id and secret', () => {
         let accessKeyId = "LTAI5tCzYk2y9aDtixTV2TVi";
         let accessKeySecret = "6HjDCM8TB5YmoMlcuOGXDljuUs6lLb";
 
-        refresher.config({
+        await refresher.config({
             accessKeyId,
             accessKeySecret
         });
@@ -67,7 +77,7 @@ describe('invalid access key id and secret', () => {
         let accessKeyId = "invalid";
         let accessKeySecret = "invalid";
 
-        refresher.config({
+        await refresher.config({
             accessKeyId,
             accessKeySecret
         });
@@ -78,16 +88,12 @@ describe('invalid access key id and secret', () => {
     });
 
     test('missing accessKeyId and accessKeySecret', async function () {
-        refresher.config({
-            accessKeyId: null,
-            accessKeySecret: null
-        });
-
-        let path = 'https://blog.dengchao.fun/index.html';
-        // MissingAccessKeyId: code: 400, AccessKeyId is mandatory for this action.
-        await assertThrowsException(path, "MissingAccessKeyId");
+        try {
+            await refresher.config({});
+        } catch (e) {
+            expect(e.message).toContain('Unable to load credentials');
+        }
     });
-
 });
 
 async function assertThrowsException(path: string, keyword: string) {
