@@ -33,9 +33,11 @@ export class RefresherParser {
                 logger.info(`Decided to use aliyun cdn cache refresher as user specified args.cdn with value '${cdn}'`);
                 return new AliyunCdnCacheRefresher();
             default:
+                let message = `Invalid argument cdn value '${cdn}'.`
                 throw new Error(JSON.stringify({
-                    message: `Invalid argument cdn value '${cdn}'.`,
-                    tips: this.acceptableCdnValues
+                    message,
+                    tips: message + "\r\n" +
+                        this.acceptableCdnValues
                 }));
         }
 
