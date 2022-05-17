@@ -15,3 +15,4 @@
 .gitignore
 .prettierrc
 LICENSE
+tsconfig.json
