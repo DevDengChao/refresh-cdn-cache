@@ -4,6 +4,14 @@
   "version": "0.0.5",
   "main": "dist/index.js",
   "license": "MIT",
+  "author": {
+    "name": "DevDengChao",
+    "url": "https://github.com/DevDengChao"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DevDengChao/refresh-cdn-cache"
+  },
   "scripts": {
     "build": "tsc",
     "test": "jest --detectOpenHandles --forceExit",
