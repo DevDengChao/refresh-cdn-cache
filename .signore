@@ -3,7 +3,6 @@
 .s/
 coverage/
 examples/
-node_modules/
 src/
 test/
 .env
