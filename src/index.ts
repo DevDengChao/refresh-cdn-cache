@@ -1,5 +1,7 @@
-import {lodash, Logger} from "@serverless-devs/core";
+import {lodash, Logger, makeUnderLine} from "@serverless-devs/core";
 import {RefresherParser} from "./refresher-parser";
+
+let manifest = require("../package.json");
 
 let logger = new Logger("refresh-cdn-cache");
 
@@ -14,10 +16,13 @@ module.exports = async function index(inputs, args) {
     logger.debug(`args params: ${JSON.stringify(args)}`);
 
     let refresher = new RefresherParser(inputs, args).parse();  // choose a proper refresher
-    args.credentials = lodash.get(inputs, 'credentials');        // mixin credentials
+    args.credentials = lodash.get(inputs, 'credentials');       // mixin credentials
     await refresher.config(args);
     let paths = lodash.get(args, "paths");
     await refresher.refresh(paths);                             // do the job
+
+    logger.info(`Thanks for using Refresh CDN Cache plugin v${manifest.version} by DevDengChao.
+If you think my plugin helpful, please support me by star the repository ${makeUnderLine(manifest.repository.url)} or buy me a coffee 💗`);
 
     return inputs;
 }
