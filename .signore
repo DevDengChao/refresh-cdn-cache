@@ -13,4 +13,5 @@
 /test/
 .env
 .gitignore
+.prettierrc
 LICENSE
