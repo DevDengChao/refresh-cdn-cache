@@ -42,7 +42,10 @@ export class AliyunCdnCacheRefresher extends AbstractCdnCacheRefresher {
       return previousValue + '\r\n' + currentValue;
     });
     request.objectType = type;
-    await this.client.refreshObjectCaches(request); // this may throw runtime exception
+    let response = await this.client.refreshObjectCaches(request); // this may throw runtime exception
+    this.logger.debug(
+      `Refresh paths as ${type} success, request id: ${response.body.requestId}`
+    );
   }
 
   protected loadCredentialFromArgs(args: Record<string, any>): Credential {
