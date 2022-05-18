@@ -8,7 +8,7 @@
 /.s/
 /coverage/
 /examples/
-/node_modules/
+# /node_modules/
 /src/
 /test/
 .env

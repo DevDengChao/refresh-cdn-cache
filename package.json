@@ -16,6 +16,7 @@
     "build": "tsc",
     "test": "jest --detectOpenHandles --forceExit",
     "test:e2e": "node examples/run-all-e2e-test.js",
+    "prepublish": "yarn install --production",
     "publish": "s cli registry publish"
   },
   "dependencies": {
