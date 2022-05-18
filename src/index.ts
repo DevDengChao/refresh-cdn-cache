@@ -24,6 +24,8 @@ module.exports = async function index(inputs, args) {
   let paths = lodash.get(args, 'paths');
   await refresher.refresh(paths); // do the job
 
+  logger.info('Refresh CDN cache success.');
+
   logger.info(
     `If you think my plugin helpful, please support me by star the repository ${makeUnderLine(
       manifest.repository.url

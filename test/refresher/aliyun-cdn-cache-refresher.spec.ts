@@ -28,6 +28,7 @@ describe('valid access key id and secret', () => {
     let path = [
       'https://blog.dengchao.fun/index.html',
       'https://blog.dengchao.fun/tag/',
+      '^https://blog.dengchao.fun/2022/.*$',
     ];
     await refresher.refresh(path);
   });
