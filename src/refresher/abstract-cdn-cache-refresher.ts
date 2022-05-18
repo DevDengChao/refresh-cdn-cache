@@ -65,7 +65,8 @@ export abstract class AbstractCdnCacheRefresher implements CdnCacheRefresher {
   }
 
   async refresh(paths: Array<string> | string) {
-    if (typeof paths == 'string') paths = [paths];
+    if (typeof paths == "string") paths = [paths];
+    if (paths.length === 0) return;
     await this.onRefresh(paths);
   }
 
