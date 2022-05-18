@@ -16,8 +16,8 @@
     "build": "tsc",
     "test": "jest --detectOpenHandles --forceExit",
     "test:e2e": "node examples/run-all-e2e-test.js",
-    "prepublish": "yarn install --production",
-    "publish": "s cli registry publish"
+    "prerelease": "yarn install --production",
+    "release": "s cli registry publish"
   },
   "dependencies": {
     "@alicloud/cdn20180510": "1.0.10",
