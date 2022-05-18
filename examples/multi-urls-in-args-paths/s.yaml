@@ -8,8 +8,12 @@ services:
         - plugin: ${path(../../dist/)}
           args:
             paths:
+              # if the path end with '/', then refresh a folder
+              - https://blog.dengchao.fun/tag/
+              # if the path start with '^' and end with '$', then refresh all urls which matches the regex pattern
+              - ^https://blog.dengchao.fun/2022/.*$
+              # refresh a single url
               - https://blog.dengchao.fun/index.html
-              - https://blog.dengchao.fun/tag/index.html
     # you are expected to have configured 'cdn' as a serverless-devs/s config.
     access: cdn
     component: devsapp/fc

@@ -16,9 +16,16 @@ services:
         - plugin: refresh-cdn-cache
           args:
             cdn: aliyun
+            access: cdn
             accessKeyId: ${env(CDN_ACCESS_KEY_ID)}
             accessKeySecret: ${env(CDN_ACCESS_KEY_SECRET)}
-            paths: https://blog.dengchao.fun/index.html
+            paths:
+              # 刷新单个 URL
+              - https://blog.dengchao.fun/index.html
+              # 刷新单个目录
+              - https://blog.dengchao.fun/tag/
+              # 使用 ^ 开头 $ 结尾的表达式进行匹配
+              - ^https://blog.dengchao.fun/2022/.*$
     component: devsapp/fc
     props:
       region: cn-shenzhen
@@ -34,7 +41,8 @@ services:
 ## 参数说明
 
 + paths: 待刷新的 URL.
-    + 说明: 必填, 可填写单个字符串或者字符串数组.
+    + 说明: 必填, 可填写单个字符串或者字符串数组. <br/>
+      当以 `/` 结尾时, 刷新整个目录. 当以 `^` 开头并以 `$` 结尾时刷新匹配表达式的全部 URL.
     + 示例值: `https://example.com/`
 + cdn: CDN 服务供应商标识.
     + 说明: 选填, 当该参数未填写时, 将通过 service.component 来推断对应的取值. 不区分大小写.
@@ -42,11 +50,11 @@ services:
         + `aliyun`
         + `alibaba`
 + access: @serverless-devs/s 配置列表中的其中一个配置别名.
-    + 说明: 选填, 当填写该参数时, 插件将尝试加载对应的密钥作为操作 CDN 时的密钥. 区分大小写.
+    + 说明: 选填, 当填写该参数时, 插件将尝试加载对应的配置作为操作 CDN 时的密钥. 区分大小写.
     + 示例值:
         + `default`
-+ accessKeyId: 访问密钥 ID.
-+ accessKeySecret: 访问密钥密码.
++ accessKeyId: 选填, 访问密钥 ID.
++ accessKeySecret: 选填, 访问密钥密码.
 
 ### 密钥加载优先级
 
