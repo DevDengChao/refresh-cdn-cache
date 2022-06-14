@@ -34,47 +34,47 @@ describe('load credential by args.access', () => {
 });
 
 describe('load credential from env', () => {
-    test('load credential from env', function (done) {
-      process.env.TMP_A = 'dummy-access-content';
-      let refresher = new MyCdnCacheRefresher(done);
-      refresher.config({});
-    });
-    test('load credential from env', function (done) {
-      process.env.TMP_ACCESS = 'dummy-access-content';
-      let refresher = new MyCdnCacheRefresher(done);
-      refresher.config({});
-    });
+  test('load credential from env', function (done) {
+    process.env.TMP_A = 'dummy-access-content';
+    let refresher = new MyCdnCacheRefresher(done);
+    refresher.config({});
+  });
+  test('load credential from env', function (done) {
+    process.env.TMP_ACCESS = 'dummy-access-content';
+    let refresher = new MyCdnCacheRefresher(done);
+    refresher.config({});
+  });
 });
 
 test('load credential from credentials', function (done) {
-    process.env = {}; // reset all env in this test case
-    let refresher = new MyCdnCacheRefresher(done);
-    // setup @serverless-devs/s credentials manually
-    setKnownCredential({ A: 'dummy-access-content' }, 'dummy-access')
-      .then(() => getCredential('dummy-access'))
-      .then((credentials) => {
-        console.log(`injecting credentials ${credentials}`);
-        return refresher.config({ credentials });
-      });
+  process.env = {}; // reset all env in this test case
+  let refresher = new MyCdnCacheRefresher(done);
+  // setup @serverless-devs/s credentials manually
+  setKnownCredential({ A: 'dummy-access-content' }, 'dummy-access')
+    .then(() => getCredential('dummy-access'))
+    .then((credentials) => {
+      console.log(`injecting credentials ${credentials}`);
+      return refresher.config({ credentials });
+    });
 });
 
 test('unable to load credential', function (done) {
-    process.env = {}; // reset all env in this test case
-    new MyCdnCacheRefresher(() => {
-      done('This function should not be invoked');
+  process.env = {}; // reset all env in this test case
+  new MyCdnCacheRefresher(() => {
+    done('This function should not be invoked');
+  })
+    .config({
+      credentials: {
+        B: 'the key should be A',
+      },
     })
-      .config({
-        credentials: {
-          B: 'the key should be A',
-        },
-      })
-      .catch((error) => {
-        console.warn(error.message);
-        expect(JSON.parse(error.message).tips).toContain(
-          'Please setup credentials correctly.'
-        );
-        done();
-      });
+    .catch((error) => {
+      console.warn(error.message);
+      expect(JSON.parse(error.message).tips).toContain(
+        'Please setup credentials correctly.'
+      );
+      done();
+    });
 });
 
 test('refresh a single item', function (done) {
