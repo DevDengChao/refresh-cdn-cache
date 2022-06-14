@@ -70,9 +70,10 @@ test('unable to load credential', function (done) {
     })
     .catch((error) => {
       console.warn(error.message);
-      expect(JSON.parse(error.message).tips).toContain(
-        'Please setup credentials correctly.'
-      );
+      let tips = JSON.parse(error.message).tips;
+      let manifest = require('../../package.json');
+      expect(tips).toContain('Please setup credentials correctly');
+      expect(tips).toContain(manifest.repository.url);
       done();
     });
 });

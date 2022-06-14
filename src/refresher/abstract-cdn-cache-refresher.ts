@@ -3,6 +3,7 @@ import {
   getCredential,
   getCredentialAliasList,
   Logger,
+  makeUnderLine,
 } from '@serverless-devs/core';
 import { Credential } from '../credential';
 
@@ -54,12 +55,16 @@ export abstract class AbstractCdnCacheRefresher implements CdnCacheRefresher {
       return;
     }
 
-    // TODO 2022/5/16: add refer link
     let message = 'Unable to load credentials.';
+    let manifest = require('../../package.json');
     throw new Error(
       JSON.stringify({
         message,
-        tips: message + '\r\n' + 'Please setup credentials correctly.',
+        tips:
+          message +
+          '\r\n' +
+          'Please setup credentials correctly: ' +
+          makeUnderLine(manifest.repository.url),
       })
     );
   }
