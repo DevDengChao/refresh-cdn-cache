@@ -1,5 +1,5 @@
 import { CdnCacheRefresher } from './refresher/cdn-cache-refresher';
-import { lodash, Logger } from '@serverless-devs/core';
+import { chalk, lodash, Logger, makeUnderLine } from '@serverless-devs/core';
 import { AliyunCdnCacheRefresher } from './refresher/aliyun-cdn-cache-refresher';
 
 let logger = new Logger('refresh-cdn-cache');
@@ -56,20 +56,21 @@ export class RefresherParser {
         return new AliyunCdnCacheRefresher();
       default:
         let message = `Cannot determine which cdn cache refresher to use.`;
-        // TODO 2022/5/12: highlight in example
         throw new Error(
           JSON.stringify({
             message,
             tips:
               message +
               '\r\n' +
-              'Please specify a cdn argument like below or report your issue here: https://github.com/DevDengChao/refresh-cdn-cache\r\n' +
+              'Please specify a cdn argument like below or report your issue here: ' +
+              makeUnderLine(require('../package.json').repository.url) +
+              '\r\n' +
               '\r\n' +
               'actions:\r\n' +
               '  post-deploy:\r\n' +
               '    - plugin: refresh-cdn-cache\r\n' +
               '      args:\r\n' +
-              '        cdn: aliyun\r\n' +
+              chalk.green('        cdn: aliyun\r\n') +
               '\r\n' +
               this.acceptableCdnValues,
           })
