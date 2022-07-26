@@ -1,5 +1,5 @@
 {
-  "name": "refresh-cdn-cache-example",
+  "name": "load-credential-from-args-access",
   "private": true,
   "version": "0.0.0",
   "scripts": {
