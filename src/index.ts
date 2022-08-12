@@ -1,24 +1,9 @@
-import { lodash, Logger, makeUnderLine } from '@serverless-devs/core';
-import { RefresherParser } from './refresher-parser';
-import { isThereAnyChanges } from './is-there-any-changes';
+import { Logger, makeUnderLine } from "@serverless-devs/core";
+import { Main } from "./main";
 
-let manifest = require('../package.json');
+let manifest = require("../package.json");
 
-let logger = new Logger('refresh-cdn-cache');
-
-export async function onSomethingChanged(inputs, args) {
-  let refresher = new RefresherParser(inputs, args).parse(); // choose a proper refresher
-  args.credentials = lodash.get(inputs, 'credentials'); // mixin credentials
-  await refresher.config(args);
-  let paths = lodash.get(args, 'paths');
-  await refresher.refresh(paths); // do the job
-
-  logger.info('Refresh CDN cache success.');
-}
-
-export function onNothingChanged() {
-  logger.info('Refresh CDN cache skipped as nothing changed.');
-}
+let logger = new Logger("refresh-cdn-cache");
 
 /**
  * 插件入口
@@ -33,11 +18,9 @@ export default async function index(inputs, args) {
   logger.debug(`inputs params: ${JSON.stringify(inputs)}`);
   logger.debug(`args params: ${JSON.stringify(args)}`);
 
-  if (await isThereAnyChanges(inputs, args)) {
-    await this.onSomethingChanged(inputs, args);
-  } else {
-    this.onNothingChanged();
-  }
+  // mock 全局方法会导致单元测试或集成测试找不到 xxx() 或 this.xxx(), 如果使用 export.xxx()
+  // 则会影响到 IDE 代码静态分析功能, 因此将全局方法的控制权转移到对象上, 以便测试和 IDE 静态分析.
+  await Main.handle(inputs, args);
 
   logger.info(
     `If you think my plugin helpful, please support me by star the repository ${makeUnderLine(
