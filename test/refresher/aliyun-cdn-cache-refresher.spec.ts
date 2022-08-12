@@ -26,7 +26,7 @@ describe('valid access key id and secret', () => {
 
   test('refresh cdn cache', async function () {
     let path = [
-      'https://blog.dengchao.fun/index.html',
+      'https://blog.dengchao.fun/non-exists/index.html',
       'https://blog.dengchao.fun/tag/',
       // language=RegExp
       '^https://blog.dengchao.fun/2022/.*$',
