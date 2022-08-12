@@ -29,7 +29,7 @@ module.exports = async function index(inputs, args) {
   logger.info(
     `If you think my plugin helpful, please support me by star the repository ${makeUnderLine(
       manifest.repository.url
-    )} or buy me a coffee 💗`
+    )} or buy me a cup of coffee 💗`
   );
 
   return inputs;
