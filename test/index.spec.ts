@@ -1,9 +1,18 @@
-let subject = require('../src/index');
 import 'dotenv/config';
+import * as isThereAnyChanges from '../src/is-there-any-changes';
 
-test('it works', async function () {
+let subject = require('../src/index');
+
+test('when there is something changed, then refresh cdn', async function () {
   let inputs = { a: 'b' };
-  let output = await subject(inputs, {
+
+  jest
+    .spyOn(isThereAnyChanges, 'isThereAnyChanges')
+    .mockReturnValue(Promise.resolve(true));
+
+  let onSomethingChanged = jest.spyOn(subject, 'onSomethingChanged');
+
+  let output = await subject.default(inputs, {
     cdn: 'aliyun',
     accessKeyId: process.env.CDN_ACCESS_KEY_ID,
     accessKeySecret: process.env.CDN_ACCESS_KEY_SECRET,
@@ -11,4 +20,25 @@ test('it works', async function () {
   });
 
   expect(output).toStrictEqual(inputs);
+  expect(onSomethingChanged).toHaveBeenCalled();
+});
+
+test('when there is nothing changed, then skip refresh cdn', async function () {
+  let inputs = {};
+
+  jest
+    .spyOn(isThereAnyChanges, 'isThereAnyChanges')
+    .mockReturnValue(Promise.resolve(false));
+
+  let onNothingChanged = jest.spyOn(subject, 'onNothingChanged');
+
+  let output = await subject.default(inputs, {
+    cdn: '',
+    accessKeyId: '',
+    accessKeySecret: '',
+    paths: '',
+  });
+
+  expect(output).toStrictEqual(inputs);
+  expect(onNothingChanged).toHaveBeenCalled();
 });
