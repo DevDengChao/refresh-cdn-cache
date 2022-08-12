@@ -1,5 +1,6 @@
 import { lodash, Logger, makeUnderLine } from "@serverless-devs/core";
 import { RefresherParser } from "./refresher-parser";
+import { isThereAnyChanges } from "./is-there-any-changes";
 
 let manifest = require("../package.json");
 
@@ -18,13 +19,17 @@ module.exports = async function index(inputs, args) {
   logger.debug(`inputs params: ${JSON.stringify(inputs)}`);
   logger.debug(`args params: ${JSON.stringify(args)}`);
 
-  let refresher = new RefresherParser(inputs, args).parse(); // choose a proper refresher
-  args.credentials = lodash.get(inputs, 'credentials'); // mixin credentials
-  await refresher.config(args);
-  let paths = lodash.get(args, 'paths');
-  await refresher.refresh(paths); // do the job
+  if (await isThereAnyChanges(inputs, args)) {
+    let refresher = new RefresherParser(inputs, args).parse(); // choose a proper refresher
+    args.credentials = lodash.get(inputs, "credentials"); // mixin credentials
+    await refresher.config(args);
+    let paths = lodash.get(args, "paths");
+    await refresher.refresh(paths); // do the job
 
-  logger.info('Refresh CDN cache success.');
+    logger.info("Refresh CDN cache success.");
+  } else {
+    logger.info("Refresh CDN cache skipped as nothing changed.");
+  }
 
   logger.info(
     `If you think my plugin helpful, please support me by star the repository ${makeUnderLine(
