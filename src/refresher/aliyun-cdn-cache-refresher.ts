@@ -1,5 +1,6 @@
 import { AbstractCdnCacheRefresher } from './abstract-cdn-cache-refresher';
 import { Config } from '@alicloud/openapi-client';
+import { RuntimeOptions } from '@alicloud/tea-util';
 import Client, { RefreshObjectCachesRequest } from '@alicloud/cdn20180510';
 import { decryptCredential } from '@serverless-devs/core';
 import { Credential } from '../credential';
@@ -42,7 +43,12 @@ export class AliyunCdnCacheRefresher extends AbstractCdnCacheRefresher {
       return previousValue + '\r\n' + currentValue;
     });
     request.objectType = type;
-    let response = await this.client.refreshObjectCaches(request); // this may throw runtime exception
+    let options = new RuntimeOptions();
+    options.autoretry = true;
+    let response = await this.client.refreshObjectCachesWithOptions(
+      request,
+      options
+    ); // this may throw runtime exception
     this.logger.debug(
       `Refresh paths as ${type} success, request id: ${response.body.requestId}`
     );
