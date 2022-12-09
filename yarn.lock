@@ -2,16 +2,16 @@
 # yarn lockfile v1
 
 
-"@alicloud/cdn20180510@1.0.12":
-  version "1.0.12"
-  resolved "https://registry.npmmirror.com/@alicloud/cdn20180510/-/cdn20180510-1.0.12.tgz#aa41418fc5bac3e6421ad3bdcfc7c4ac43450b7e"
-  integrity sha512-KhlA9ohVBNeiOW04cWVzF9wVkwnKhyl3qyM2MZPhw7FKHsQJE5MxSOQdIm4KNM5K6tU03NsIIeCphMFFLOQjCg==
+"@alicloud/cdn20180510@^1.1.8":
+  version "1.1.8"
+  resolved "https://registry.npmmirror.com/@alicloud/cdn20180510/-/cdn20180510-1.1.8.tgz#394ae41688f9a60e347c084fd9a86a97673a375e"
+  integrity sha512-7tjXnRQWF1e3QmnaUbICuWwm9QSr5hE5UGgX02viOMfHc/xfDzMPj5pAHU98H6T+MRZw/nOpqlOCiR/Rr2gCAw==
   dependencies:
     "@alicloud/endpoint-util" "^0.0.1"
-    "@alicloud/openapi-client" "^0.4.1"
-    "@alicloud/openapi-util" "^0.2.9"
+    "@alicloud/openapi-client" "^0.4.4"
+    "@alicloud/openapi-util" "^0.3.0"
     "@alicloud/tea-typescript" "^1.7.1"
-    "@alicloud/tea-util" "^1.4.0"
+    "@alicloud/tea-util" "^1.4.5"
 
 "@alicloud/credentials@^2":
   version "2.2.3"
@@ -50,6 +50,18 @@
     "@alicloud/tea-typescript" "^1.7.1"
     "@alicloud/tea-util" "^1.4.0"
 
+"@alicloud/openapi-client@^0.4.4":
+  version "0.4.4"
+  resolved "https://registry.npmmirror.com/@alicloud/openapi-client/-/openapi-client-0.4.4.tgz#91ebab0addecf1061f80811218a2428657199171"
+  integrity sha512-NBUEeHCXOr+gLzhBNHlUfJVFIvgyvT/W2Z93ODjq0DCTU15HpVMeWxbsQALOx/BbccFizMsW4S5nL39SSMqXoQ==
+  dependencies:
+    "@alicloud/credentials" "^2"
+    "@alicloud/gateway-spi" "^0.0.8"
+    "@alicloud/openapi-util" "^0.2.9"
+    "@alicloud/tea-typescript" "^1.7.1"
+    "@alicloud/tea-util" "^1.4.4"
+    "@alicloud/tea-xml" "0.0.2"
+
 "@alicloud/openapi-util@^0.2.7":
   version "0.2.8"
   resolved "https://registry.npmmirror.com/@alicloud/openapi-util/-/openapi-util-0.2.8.tgz#b404cff825c1b00967e0b3929a48856e6a42bbd1"
@@ -70,6 +82,16 @@
     kitx "^2.1.0"
     sm3 "^1.0.3"
 
+"@alicloud/openapi-util@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.npmmirror.com/@alicloud/openapi-util/-/openapi-util-0.3.0.tgz#7e901b30389b0764ad84f188ff6b0c5627b293be"
+  integrity sha512-K/6lvc6tKDum4xBVQHxIBBfmCQ+9j48ULggA1+x1j29AXIO8EUL6Xaere8uQ/eG9cx1eb+q+d8xfYwS4jdwrSg==
+  dependencies:
+    "@alicloud/tea-typescript" "^1.7.1"
+    "@alicloud/tea-util" "^1.3.0"
+    kitx "^2.1.0"
+    sm3 "^1.0.3"
+
 "@alicloud/pop-core@^1.7.10":
   version "1.7.12"
   resolved "https://registry.npmmirror.com/@alicloud/pop-core/-/pop-core-1.7.12.tgz#007d21aacc926c231c02e4c903deb1b5a188f418"
@@ -80,6 +102,14 @@
     json-bigint "^1.0.0"
     kitx "^1.2.1"
     xml2js "^0.4.17"
+
+"@alicloud/tea-typescript@^1":
+  version "1.8.0"
+  resolved "https://registry.npmmirror.com/@alicloud/tea-typescript/-/tea-typescript-1.8.0.tgz#aa9b04b6ee53e1b22aa51e224a950ea5bcd966e9"
+  integrity sha512-CWXWaquauJf0sW30mgJRVu9aaXyBth5uMBCUc+5vKTK1zlgf3hIqRUjJZbjlwHwQ5y9anwcu18r48nOZb7l2QQ==
+  dependencies:
+    "@types/node" "^12.0.2"
+    httpx "^2.2.6"
 
 "@alicloud/tea-typescript@^1.5.1", "@alicloud/tea-typescript@^1.5.3", "@alicloud/tea-typescript@^1.7.1":
   version "1.7.2"
@@ -96,6 +126,23 @@
   dependencies:
     "@alicloud/tea-typescript" "^1.5.1"
     kitx "^2.0.0"
+
+"@alicloud/tea-util@^1.4.4", "@alicloud/tea-util@^1.4.5":
+  version "1.4.5"
+  resolved "https://registry.npmmirror.com/@alicloud/tea-util/-/tea-util-1.4.5.tgz#ba434dc725883c2f36a9eb9a75a7f82698c317fa"
+  integrity sha512-7NuThYUi90/ivT/ORKusm0NVKlc1khPTtlzTR77xEqSBt7d24Ee/Lo70hx9PWP28nHpIZ1gM0NKYBtpq7HUDlg==
+  dependencies:
+    "@alicloud/tea-typescript" "^1.5.1"
+    kitx "^2.0.0"
+
+"@alicloud/tea-xml@0.0.2":
+  version "0.0.2"
+  resolved "https://registry.npmmirror.com/@alicloud/tea-xml/-/tea-xml-0.0.2.tgz#7c97a38255d5e4f009c437facd3a2afc0ef17f45"
+  integrity sha512-Xs7v5y7YSNSDDYmiDWAC0/013VWPjS3dQU4KezSLva9VGiTVPaL3S7Nk4NrTmAYCG6MKcrRj/nGEDIWL5KRoPg==
+  dependencies:
+    "@alicloud/tea-typescript" "^1"
+    "@types/xml2js" "^0.4.5"
+    xml2js "^0.4.22"
 
 "@ampproject/remapping@^2.1.0":
   version "2.2.0"
@@ -835,6 +882,13 @@
   version "2.0.1"
   resolved "https://registry.npmmirror.com/@types/stack-utils/-/stack-utils-2.0.1.tgz#20f18294f797f2209b5f65c8e3b5c8e8261d127c"
   integrity sha512-Hl219/BT5fLAaz6NDkSuhzasy49dwQS/DSdu4MdggFB8zcXv7vflBI3xp7FEmkmdDkBUI2bPUNeMttp2knYdxw==
+
+"@types/xml2js@^0.4.5":
+  version "0.4.11"
+  resolved "https://registry.npmmirror.com/@types/xml2js/-/xml2js-0.4.11.tgz#bf46a84ecc12c41159a7bd9cf51ae84129af0e79"
+  integrity sha512-JdigeAKmCyoJUiQljjr7tQG3if9NkqGUgwEUqBvV0N7LM4HyQk7UXCnusRa1lnvXAEYJ8mw8GtZWioagNztOwA==
+  dependencies:
+    "@types/node" "*"
 
 "@types/yargs-parser@*":
   version "21.0.0"
@@ -3449,7 +3503,7 @@ write-file-atomic@^4.0.1:
     imurmurhash "^0.1.4"
     signal-exit "^3.0.7"
 
-xml2js@^0.4.17:
+xml2js@^0.4.17, xml2js@^0.4.22:
   version "0.4.23"
   resolved "https://registry.npmmirror.com/xml2js/-/xml2js-0.4.23.tgz#a0c69516752421eb2ac758ee4d4ccf58843eac66"
   integrity sha512-ySPiMjM0+pLDftHgXY4By0uswI3SPKLDw/i3UXbnO8M/p28zqexCUoPmQFrYD+/1BzhGJSs2i1ERWKJAtiLrug==
