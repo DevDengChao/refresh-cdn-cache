@@ -22,7 +22,7 @@
   "dependencies": {
     "@alicloud/cdn20180510": "^1.1.8",
     "@alicloud/openapi-client": "^0.4.4",
-    "@serverless-devs/core": "^0.1.38"
+    "@serverless-devs/core": "^0.1.48"
   },
   "devDependencies": {
     "@types/jest": "^29.2.4",
