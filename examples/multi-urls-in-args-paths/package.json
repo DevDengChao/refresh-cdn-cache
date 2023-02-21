@@ -6,6 +6,6 @@
     "test": "s build --debug"
   },
   "devDependencies": {
-    "@serverless-devs/s": "^2.1.0"
+    "@serverless-devs/s": "^2.1.11"
   }
 }
