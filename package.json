@@ -1,7 +1,7 @@
 {
   "name": "refresh-cdn-cache",
   "private": true,
-  "version": "1.1.0",
+  "version": "1.1.1",
   "main": "dist/index.js",
   "license": "MIT",
   "author": {
@@ -17,7 +17,7 @@
     "test": "jest --detectOpenHandles --forceExit",
     "test:e2e": "node examples/run-all-e2e-test.js",
     "prerelease": "yarn install --production",
-    "release": "s cli registry publish"
+    "release": "s registry publish"
   },
   "dependencies": {
     "@alicloud/cdn20180510": "^4.2.2",
