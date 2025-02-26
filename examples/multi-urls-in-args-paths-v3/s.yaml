@@ -1,0 +1,21 @@
+edition: 3.0.0
+name: refresh-cdn-cache.example.dengchao.fun
+access: default
+resources:
+  default:
+    actions:
+      post-plan:
+        - plugin: ${path(../../dist/)}
+          args:
+            paths:
+              - https://blog.dengchao.fun/tag/
+              - ^https://blog.dengchao.fun/2022/.*$
+              - https://blog.dengchao.fun/index.html
+    access: cdn
+    component: fc3
+    props:
+      region: cn-shenzhen
+      handler: dummy-handler
+      runtime: custom
+      functionName: dummy-service$dummy-function
+      code: ./

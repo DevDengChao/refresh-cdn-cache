@@ -1,0 +1,11 @@
+{
+  "name": "multi-urls-in-args-paths",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "test": "s plan --debug"
+  },
+  "devDependencies": {
+    "@serverless-devs/s": "^3.1.1"
+  }
+}

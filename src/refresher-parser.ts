@@ -27,13 +27,13 @@ export class RefresherParser {
     switch (cdn) {
       case '':
         logger.debug(
-          `Cannot determine which cdn cache refresher to use by args.cdn`
+          `Cannot determine which cdn cache refresher to use by args.cdn`,
         );
         break;
       case 'alibaba':
       case 'aliyun':
         logger.info(
-          `Decided to use aliyun cdn cache refresher as user specified args.cdn with value '${cdn}'`
+          `Decided to use aliyun cdn cache refresher as user specified args.cdn with value '${cdn}'`,
         );
         return new AliyunCdnCacheRefresher();
       default:
@@ -42,16 +42,20 @@ export class RefresherParser {
           JSON.stringify({
             message,
             tips: message + '\r\n' + this.acceptableCdnValues,
-          })
+          }),
         );
     }
 
-    let component = lodash.get(this.inputs, 'project.component');
+    let v2Component = lodash.get(this.inputs, 'project.component');
+    let v3Component = lodash.get(this.inputs, 'resource.component');
+    let component = v2Component || v3Component;
     switch (component) {
       case 'fc':
+      case 'fc3':
       case 'devsapp/fc':
+      case 'devsapp/fc3':
         logger.info(
-          `Decided to use aliyun cdn cache refresher as user specified service.component with value '${component}'`
+          `Decided to use aliyun cdn cache refresher as user specified component with value '${component}'`,
         );
         return new AliyunCdnCacheRefresher();
       default:
@@ -73,7 +77,7 @@ export class RefresherParser {
               chalk.green('        cdn: aliyun\r\n') +
               '\r\n' +
               this.acceptableCdnValues,
-          })
+          }),
         );
     }
   }
