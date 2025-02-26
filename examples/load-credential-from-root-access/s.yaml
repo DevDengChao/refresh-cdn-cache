@@ -5,7 +5,7 @@ access: cdn
 services:
   default:
     actions:
-      post-build:
+      post-plan:
         - plugin: ${path(../../dist/)}
           args:
             paths: https://blog.dengchao.fun/index.html

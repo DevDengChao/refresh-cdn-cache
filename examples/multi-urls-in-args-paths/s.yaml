@@ -1,10 +1,10 @@
 edition: 1.0.0
 name: refresh-cdn-cache.example.dengchao.fun
-access: ignored
+access: default
 services:
   default:
     actions:
-      post-build:
+      post-plan:
         - plugin: ${path(../../dist/)}
           args:
             paths:

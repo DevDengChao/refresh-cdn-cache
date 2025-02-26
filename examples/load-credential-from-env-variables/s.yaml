@@ -4,7 +4,7 @@ access: default
 services:
   default:
     actions:
-      post-build:
+      post-plan:
         - plugin: ${path(../../dist/)}
           args:
             # Aliyun CDN Cache Refresher will try to use ALIYUN_CDN_ACCESS_KEY_ID or CDN_ACCESS_KEY_ID as accessKeyId,

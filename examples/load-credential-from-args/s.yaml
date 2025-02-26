@@ -4,7 +4,7 @@ access: default
 services:
   default:
     actions:
-      post-build:
+      post-plan:
         - plugin: ${path(../../dist/)}
           args:
             accessKeyId: ${env(CDN_ACCESS_KEY_ID)}

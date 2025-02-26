@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "test": "s build --debug"
+    "test": "s plan --debug"
   },
   "devDependencies": {
     "@serverless-devs/s": "^3.1.1"
