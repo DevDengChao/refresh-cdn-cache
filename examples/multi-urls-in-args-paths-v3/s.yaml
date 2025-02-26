@@ -1,6 +1,6 @@
 edition: 3.0.0
 name: refresh-cdn-cache.example.dengchao.fun
-access: default
+access: cdn
 resources:
   default:
     actions:
