@@ -1,5 +1,5 @@
-import { lodash, Logger, makeUnderLine } from "@serverless-devs/core";
-import { RefresherParser } from "./refresher-parser";
+import { lodash, Logger, makeUnderLine } from '@serverless-devs/core';
+import { RefresherParser } from './refresher-parser';
 
 let manifest = require("../package.json");
 
@@ -9,7 +9,7 @@ let logger = new Logger("refresh-cdn-cache");
  * 插件入口
  * @param inputs
  * @param args
- * @see <a href="https://github.com/Serverless-Devs/Serverless-Devs/blob/master/spec/zh/0.0.2/serverless_package_model/package_model.md#%E6%8F%92%E4%BB%B6%E6%A8%A1%E5%9E%8B%E8%A7%84%E8%8C%83">插件模型规范</a>
+ * @see <https://www.serverless-devs.com/docs/dev-guide/plugin/#%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83>代码规范</a>
  */
 module.exports = async function index(inputs, args) {
   logger.info(
