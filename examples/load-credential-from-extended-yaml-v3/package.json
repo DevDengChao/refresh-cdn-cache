@@ -1,0 +1,11 @@
+{
+  "name": "load-credential-from-root-access-v3",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "test": "s plan --debug --template s-prod.yaml"
+  },
+  "devDependencies": {
+    "@serverless-devs/s": "^3.1.1"
+  }
+}
