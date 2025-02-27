@@ -1,9 +1,9 @@
 import { lodash, Logger, makeUnderLine } from '@serverless-devs/core';
 import { RefresherParser } from './refresher-parser';
 
-let manifest = require("../package.json");
+let manifest = require('../package.json');
 
-let logger = new Logger("refresh-cdn-cache");
+let logger = new Logger('refresh-cdn-cache');
 
 /**
  * 插件入口
@@ -13,13 +13,15 @@ let logger = new Logger("refresh-cdn-cache");
  */
 module.exports = async function index(inputs, args) {
   logger.info(
-    `Thanks for using Refresh CDN Cache plugin v${manifest.version} by DevDengChao.`
+    `Thanks for using Refresh CDN Cache plugin v${manifest.version} by DevDengChao.`,
   );
   logger.debug(`inputs params: ${JSON.stringify(inputs)}`);
   logger.debug(`args params: ${JSON.stringify(args)}`);
 
   let refresher = new RefresherParser(inputs, args).parse(); // choose a proper refresher
-  args.credentials = lodash.get(inputs, 'credentials'); // mixin credentials
+  let v2Credentials = lodash.get(inputs, 'credentials');
+  let v3Credentials = lodash.get(inputs, 'credential');
+  args.credentials = v2Credentials || v3Credentials; // mixin credentials
   await refresher.config(args);
   let paths = lodash.get(args, 'paths');
   await refresher.refresh(paths); // do the job
@@ -28,8 +30,8 @@ module.exports = async function index(inputs, args) {
 
   logger.info(
     `If you think my plugin helpful, please support me by star the repository ${makeUnderLine(
-      manifest.repository.url
-    )} or buy me a cup of coffee 💗`
+      manifest.repository.url,
+    )} or buy me a cup of coffee 💗`,
   );
 
   return inputs;
