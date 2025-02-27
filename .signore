@@ -3,6 +3,7 @@
 # then the pattern is relative to the directory level of the particular .gitignore file itself.
 # Otherwise the pattern may also match at any level below the .gitignore level.
 
+/.git/
 /.idea/
 /.github/
 /.s/
@@ -15,5 +16,7 @@
 .env
 .gitignore
 .prettierrc
+.signore
 LICENSE
 tsconfig.json
+yarn.lock
