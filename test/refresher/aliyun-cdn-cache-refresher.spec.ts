@@ -51,6 +51,10 @@ describe('valid access key id and secret', () => {
     // it works, but Aliyun CDN treat this as a single valid path
     await refresher.refresh([path]);
   });
+
+  test('paths missing', async function () {
+    await refresher.refresh(undefined);
+  });
 });
 
 describe('invalid access key id and secret', () => {
