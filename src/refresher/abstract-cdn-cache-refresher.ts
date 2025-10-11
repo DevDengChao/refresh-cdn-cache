@@ -34,7 +34,7 @@ export abstract class AbstractCdnCacheRefresher implements CdnCacheRefresher {
         }
       } else {
         this.logger.warn(
-          `attempt loading credential by args.access failed: alias ${args.access} not found. You may need to debug with \`s config get\`.`
+          `attempt loading credential by args.access failed: alias ${args.access} not found. You may need to debug with \`s config get\`.`,
         );
       }
     }
@@ -47,7 +47,7 @@ export abstract class AbstractCdnCacheRefresher implements CdnCacheRefresher {
     }
 
     this.logger.debug(
-      "attempt loading credential from @serverless-devs/s' credentials"
+      "attempt loading credential from @serverless-devs/s' credentials",
     );
     this.credential = this.loadCredentialFromCredentials(args.credentials);
     if (this.credential != null && this.isCredentialFilled(this.credential)) {
@@ -65,12 +65,12 @@ export abstract class AbstractCdnCacheRefresher implements CdnCacheRefresher {
           '\r\n' +
           'Please setup credentials correctly: ' +
           makeUnderLine(manifest.repository.url),
-      })
+      }),
     );
   }
 
   async refresh(paths: Array<string> | string) {
-    if (typeof paths == "string") paths = [paths];
+    if (typeof paths == 'string') paths = [paths];
     if (paths.length === 0) return;
     await this.onRefresh(paths);
   }
@@ -78,19 +78,19 @@ export abstract class AbstractCdnCacheRefresher implements CdnCacheRefresher {
   protected abstract isCredentialFilled(credential: Credential | null): boolean;
 
   protected abstract loadCredentialFromArgs(
-    args: Record<string, any>
+    args: Record<string, any>,
   ): Credential;
 
   protected abstract loadCredentialFromEnv(
-    env: Record<string, string>
+    env: Record<string, string>,
   ): Credential;
 
   protected abstract loadCredentialFromCredentials(
-    credentials: Record<string, string>
+    credentials: Record<string, string>,
   ): Credential;
 
   protected async loadCredentialFromAccess(
-    access: string
+    access: string,
   ): Promise<Credential> {
     return this.loadCredentialFromCredentials(await getCredential(access));
   }

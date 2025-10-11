@@ -47,10 +47,10 @@ export class AliyunCdnCacheRefresher extends AbstractCdnCacheRefresher {
     options.autoretry = true;
     let response = await this.client.refreshObjectCachesWithOptions(
       request,
-      options
+      options,
     ); // this may throw runtime exception
     this.logger.debug(
-      `Refresh paths as ${type} success, request id: ${response.body.requestId}`
+      `Refresh paths as ${type} success, request id: ${response.body.requestId}`,
     );
   }
 
@@ -70,7 +70,7 @@ export class AliyunCdnCacheRefresher extends AbstractCdnCacheRefresher {
   }
 
   protected loadCredentialFromCredentials(
-    credentials: Record<string, string>
+    credentials: Record<string, string>,
   ): Credential {
     let decoded = decryptCredential(credentials);
     return {
@@ -90,7 +90,7 @@ export class AliyunCdnCacheRefresher extends AbstractCdnCacheRefresher {
         accessKeyId,
         accessKeySecret,
         endpoint: 'cdn.aliyuncs.com',
-      })
+      }),
     );
   }
 }

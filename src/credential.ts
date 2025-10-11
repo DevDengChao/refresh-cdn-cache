@@ -4,4 +4,3 @@ interface AliyunCredential {
 }
 
 export interface Credential extends Record<string, string>, AliyunCredential {}
-

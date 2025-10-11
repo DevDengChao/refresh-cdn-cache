@@ -17,7 +17,7 @@ test('unacceptable args.cdn', function (done) {
     {},
     {
       cdn: 'unacceptable-value',
-    }
+    },
   );
 
   try {
@@ -44,7 +44,7 @@ test('parse aliyun cdn cache refresher from service.component', async function (
 test('unacceptable service.component', function (done) {
   let parser = new RefresherParser(
     { project: { component: 'unacceptable-value' } },
-    {}
+    {},
   );
   try {
     parser.parse();
@@ -52,9 +52,8 @@ test('unacceptable service.component', function (done) {
     expect(e.message).toContain('message');
     expect(e.message).toContain('tips');
     expect(e.message).toContain(
-      'Cannot determine which cdn cache refresher to use'
+      'Cannot determine which cdn cache refresher to use',
     );
     done();
   }
 });
-

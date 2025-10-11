@@ -19,7 +19,7 @@ describe('load credential by args.access', () => {
   test('args.access found', function (done) {
     let refresher = new MyCdnCacheRefresher(done);
     setKnownCredential({ A: 'dummy-access-content' }, 'dummy-args-access').then(
-      () => refresher.config({ access: 'dummy-args-access' })
+      () => refresher.config({ access: 'dummy-args-access' }),
     );
   });
 
@@ -28,7 +28,7 @@ describe('load credential by args.access', () => {
     process.env.TMP_ACCESS = 'dummy-access-content';
     setKnownCredential(
       { A: 'dummy-args-access-content' },
-      'dummy-args-access'
+      'dummy-args-access',
     ).then(() => refresher.config({ access: 'default' }));
   });
 });
@@ -115,7 +115,7 @@ class MyCdnCacheRefresher extends AbstractCdnCacheRefresher {
   }
 
   protected loadCredentialFromCredentials(
-    credentials: Record<string, string>
+    credentials: Record<string, string>,
   ): Credential {
     return {
       a: credentials.A,
