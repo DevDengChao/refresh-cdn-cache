@@ -1,6 +1,6 @@
 import { AbstractCdnCacheRefresher } from './abstract-cdn-cache-refresher';
-import { Config } from '@alicloud/openapi-client';
-import { RuntimeOptions } from '@alicloud/tea-util';
+import { $OpenApiUtil } from '@alicloud/openapi-core';
+import * as $dara from '@darabonba/typescript';
 import Client, { RefreshObjectCachesRequest } from '@alicloud/cdn20180510';
 import { decryptCredential } from '@serverless-devs/core';
 import { Credential } from '../credential';
@@ -43,7 +43,7 @@ export class AliyunCdnCacheRefresher extends AbstractCdnCacheRefresher {
       return previousValue + '\r\n' + currentValue;
     });
     request.objectType = type;
-    let options = new RuntimeOptions();
+    let options = new $dara.RuntimeOptions();
     options.autoretry = true;
     let response = await this.client.refreshObjectCachesWithOptions(
       request,
@@ -86,7 +86,7 @@ export class AliyunCdnCacheRefresher extends AbstractCdnCacheRefresher {
     // https://next.api.aliyun.com/api-tools/sdk/Cdn?version=2018-05-10&language=nodejs-tea
 
     this.client = new Client(
-      new Config({
+      new $OpenApiUtil.Config({
         accessKeyId,
         accessKeySecret,
         endpoint: 'cdn.aliyuncs.com',
