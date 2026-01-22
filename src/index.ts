@@ -24,7 +24,7 @@ module.exports = async function index(inputs, args) {
   args.credentials = v2Credentials || v3Credentials; // mixin credentials
   await refresher.config(args);
   let paths = lodash.get(args, 'paths');
-  await refresher.refresh(paths); // do the job
+  if (paths) await refresher.refresh(paths); // do the job
 
   logger.info('Refresh CDN cache success.');
 
