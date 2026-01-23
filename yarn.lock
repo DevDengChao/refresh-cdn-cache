@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@alicloud/cdn20180510@^7.0.2":
-  version "7.0.2"
-  resolved "https://registry.npmmirror.com/@alicloud/cdn20180510/-/cdn20180510-7.0.2.tgz#529e864e4e81462008808752126d81264f763c7a"
-  integrity sha512-HOKe/2TDldjavkB4bAWNWtCdd+l9/Aq+zQPaByEfTZGNMbe7iz2J+So5jA0GIdCNWb467zzpFNmIpEc0/rPfYg==
+"@alicloud/cdn20180510@^8.0.0":
+  version "8.0.0"
+  resolved "https://registry.npmmirror.com/@alicloud/cdn20180510/-/cdn20180510-8.0.0.tgz#7ba8f4b3792e876eba7ccca774a3ea799b14a01a"
+  integrity sha512-aqm8fs50DB9nAfs0S7OXMyf2B3M6WWH/3pWtIrH8qMSCj1a6MQEduTfroS9dm5sj64zy4vQ6OckX41glVxzYPA==
   dependencies:
     "@alicloud/openapi-core" "^1.0.0"
     "@darabonba/typescript" "^1.0.0"

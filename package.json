@@ -21,7 +21,7 @@
     "release": "s registry publish"
   },
   "dependencies": {
-    "@alicloud/cdn20180510": "^7.0.2",
+    "@alicloud/cdn20180510": "^8.0.0",
     "@alicloud/openapi-client": "^0.4.15",
     "@serverless-devs/core": "^0.1.66"
   },
