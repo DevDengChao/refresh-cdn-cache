@@ -29,9 +29,9 @@ module.exports = async function index(inputs, args) {
   logger.info('Refresh CDN cache success.');
 
   logger.info(
-    `If you think my plugin helpful, please support me by star the repository ${makeUnderLine(
+    `Please support me by star the repository ${makeUnderLine(
       manifest.repository.url,
-    )} or buy me a cup of coffee 💗`,
+    )} if you find this plugin helpful!`,
   );
 
   return inputs;
